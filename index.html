@@ -78,32 +78,7 @@
       color: var(--white);
       overflow-x: hidden;
       min-height: 100vh;
-      cursor: none;
     }
-
-    /* ── CUSTOM CURSOR ── */
-    #cursor {
-      position: fixed;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: rgba(251,205,51,0.85);
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: width 0.2s, height 0.2s, background 0.2s;
-      mix-blend-mode: screen;
-    }
-    #cursor-glow {
-      position: fixed;
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(243,97,37,0.18) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%,-50%);
-      transition: transform 0.12s ease;
-    }
-    body:hover #cursor { opacity: 1; }
 
     /* ── ANIMATED BACKGROUND ── */
     #bg-canvas {
@@ -640,10 +615,6 @@
 </head>
 <body>
 
-  <!-- Cursor -->
-  <div id="cursor"></div>
-  <div id="cursor-glow"></div>
-
   <!-- Background blobs -->
   <div id="bg-canvas" aria-hidden="true">
     <div class="blob blob-1"></div>
@@ -1061,22 +1032,6 @@
   </footer>
 
   <script>
-    // ── CURSOR ──
-    const cursor = document.getElementById('cursor');
-    const glow = document.getElementById('cursor-glow');
-    let mx = 0, my = 0, gx = 0, gy = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-    function animateGlow() {
-      gx += (mx - gx) * 0.08; gy += (my - gy) * 0.08;
-      glow.style.left = gx + 'px'; glow.style.top = gy + 'px';
-      requestAnimationFrame(animateGlow);
-    }
-    animateGlow();
-    document.querySelectorAll('a, button, .service-card, .gallery-item, .suitable-tag').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.width = '30px'; cursor.style.height = '30px'; cursor.style.background = 'rgba(243,97,37,0.9)'; });
-      el.addEventListener('mouseleave', () => { cursor.style.width = '18px'; cursor.style.height = '18px'; cursor.style.background = 'rgba(251,205,51,0.85)'; });
-    });
-
     // ── HAMBURGER ──
     const ham = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
