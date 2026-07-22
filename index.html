@@ -586,6 +586,47 @@
     .footer-privacy-link { font-size: 0.78rem; color: rgba(251,205,51,0.65); text-decoration: none; transition: color 0.2s; }
     .footer-privacy-link:hover { color: var(--yellow); text-decoration: underline; }
 
+    /* ── CONSENT BANNER ── */
+    #consent-banner {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 10000;
+      background: rgba(20,6,0,0.97);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(251,205,51,0.18);
+      padding: 20px 24px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.4);
+      transform: translateY(120%);
+      transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+    }
+    #consent-banner.visible { transform: translateY(0); }
+    .consent-text {
+      font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.75);
+      max-width: 620px; text-align: center;
+    }
+    .consent-text a { color: var(--yellow); text-decoration: underline; }
+    .consent-actions { display: flex; gap: 12px; flex-shrink: 0; }
+    .consent-btn {
+      padding: 11px 26px; border-radius: 999px;
+      font-family: 'Work Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.02em; cursor: pointer; border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .consent-accept {
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      color: #1a0a00;
+    }
+    .consent-accept:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(243,97,37,0.4); }
+    .consent-decline {
+      background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
+    }
+    .consent-decline:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+    @media (max-width: 640px) {
+      #consent-banner { padding: 18px 16px; flex-direction: column; text-align: center; }
+      .consent-actions { width: 100%; justify-content: center; }
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
@@ -1232,6 +1273,32 @@
     window.addEventListener('scroll', () => {
       document.querySelector('nav').style.background = window.scrollY > 60 ? 'rgba(15,4,0,0.85)' : 'rgba(20,6,0,0.55)';
     });
+
+    // ── CONSENT BANNER ──
+    const consentBanner = document.getElementById('consent-banner');
+    const consentChoice = localStorage.getItem('saffron_consent');
+    if (consentBanner && !consentChoice) {
+      setTimeout(() => consentBanner.classList.add('visible'), 600);
+    }
+    function acceptConsent() {
+      localStorage.setItem('saffron_consent', 'accepted');
+      consentBanner.classList.remove('visible');
+    }
+    function declineConsent() {
+      localStorage.setItem('saffron_consent', 'declined');
+      consentBanner.classList.remove('visible');
+    }
   </script>
+  <!-- CONSENT BANNER -->
+  <div id="consent-banner" role="dialog" aria-live="polite">
+    <p class="consent-text" data-lv='Šī vietne apstrādā jūsu personas datus (piemēram, rezervācijas pieteikumā), lai sazinātos ar jums. Vairāk lasi mūsu <a href="privacy.html">privātuma politikā</a>.' data-ru='Этот сайт обрабатывает ваши персональные данные (например, при заявке на бронирование), чтобы связаться с вами. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.'>
+      Šī vietne apstrādā jūsu personas datus (piemēram, rezervācijas pieteikumā), lai sazinātos ar jums. Vairāk lasi mūsu <a href="privacy.html">privātuma politikā</a>.
+    </p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn consent-decline" onclick="declineConsent()" data-lv="Nepiekrītu" data-ru="Не согласен">Nepiekrītu</button>
+      <button type="button" class="consent-btn consent-accept" onclick="acceptConsent()" data-lv="Piekrītu" data-ru="Согласен">Piekrītu</button>
+    </div>
+  </div>
+
 </body>
 </html>
