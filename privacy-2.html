@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privātuma politika · Saffron Photo Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark:#140600; --orange:#f36125; --orange-700:#c94d1a;
+    --yellow:#fbcd33; --peach:#f4b58c;
+    --paper:#fdfbf8; --paper2:#f7f1e9; --ink:#241206;
+    --ink-soft:rgba(36,18,6,0.65); --white:#fff6ec;
+    --white-muted:rgba(255,246,236,0.65); --white-dim:rgba(255,246,236,0.3);
+    --radius-md:18px; --radius-pill:100px;
+    --font-body:"DM Sans",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-weight:400;line-height:1.75}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;
+    background:rgba(20,6,0,0.9);backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(251,205,51,0.14);
+  }
+  .nav-back{color:var(--yellow);text-decoration:none;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
+  .nav-back:hover{color:var(--white)}
+  .nav-logo-text{font-size:1rem;letter-spacing:0.12em;color:var(--white-muted)}
+
+  .lang-toggle{display:flex}
+  .lang-btn{background:transparent;border:1px solid rgba(251,205,51,0.3);color:var(--white-muted);padding:0.3rem 0.85rem;font-family:var(--font-body);font-size:0.7rem;cursor:pointer;transition:all 0.2s}
+  .lang-btn:first-child{border-radius:var(--radius-pill) 0 0 var(--radius-pill)}
+  .lang-btn:last-child{border-radius:0 var(--radius-pill) var(--radius-pill) 0;border-left:none}
+  .lang-btn.active{background:var(--orange);border-color:var(--orange);color:var(--white)}
+
+  .page-wrap{max-width:760px;margin:0 auto;padding:8rem 2rem 5rem}
+
+  .page-kicker{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange-700);margin-bottom:0.9rem;font-weight:500}
+  .page-title{font-size:clamp(2rem,5vw,3rem);font-weight:500;line-height:1.1;margin-bottom:0.75rem;color:var(--ink)}
+  .page-meta{font-size:0.8rem;color:var(--ink-soft);margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(243,97,37,0.14)}
+
+  h2{font-size:1.2rem;font-weight:500;color:var(--ink);margin:2.5rem 0 0.75rem}
+  p{font-size:0.9rem;color:var(--ink-soft);margin-bottom:0.9rem}
+  ul{font-size:0.9rem;color:var(--ink-soft);padding-left:1.4rem;margin-bottom:0.9rem}
+  ul li{margin-bottom:0.4rem}
+  a{color:var(--orange-700);text-decoration:none}
+  a:hover{color:var(--orange)}
+
+  .highlight-box{background:var(--paper2);border:1px solid rgba(243,97,37,0.16);border-radius:var(--radius-md);padding:1.5rem 1.75rem;margin:2rem 0;font-size:0.88rem;color:var(--ink-soft)}
+  .highlight-box strong{color:var(--ink)}
+
+  footer{background:var(--bg-dark);color:var(--white-muted);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(251,205,51,0.14);font-size:0.72rem}
+  footer a{color:var(--yellow);text-decoration:none}
+  footer a:hover{color:var(--white)}
+
+  /* hidden/show per lang */
+  [data-lang]{display:none}
+  body.lang-lv [data-lang="lv"]{display:block}
+  body.lang-ru [data-lang="ru"]{display:block}
+  h2[data-lang], p[data-lang], ul[data-lang], .page-title[data-lang], .page-meta[data-lang], .highlight-box[data-lang]{display:none}
+  body.lang-lv h2[data-lang="lv"],body.lang-lv p[data-lang="lv"],body.lang-lv ul[data-lang="lv"],body.lang-lv .page-title[data-lang="lv"],body.lang-lv .page-meta[data-lang="lv"],body.lang-lv .highlight-box[data-lang="lv"]{display:block}
+  body.lang-ru h2[data-lang="ru"],body.lang-ru p[data-lang="ru"],body.lang-ru ul[data-lang="ru"],body.lang-ru .page-title[data-lang="ru"],body.lang-ru .page-meta[data-lang="ru"],body.lang-ru .highlight-box[data-lang="ru"]{display:block}
+
+  @media(max-width:700px){
+    nav{padding:1rem 1.5rem}
+    .page-wrap{padding:7rem 1.25rem 4rem}
+    footer{flex-direction:column;gap:0.75rem;text-align:center}
+  }
+</style>
+</head>
+<body class="lang-lv">
+
+<nav>
+  <a href="saffron-photo-studio.html" class="nav-back">← <span id="backLabel">Atpakaļ</span></a>
+  <span class="nav-logo-text">Saffron Photo Studio</span>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('lv')">LV</button>
+    <button class="lang-btn" onclick="setLang('ru')">RU</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <p class="page-kicker" id="kickerText">Juridiskā informācija</p>
+
+  <h1 class="page-title" data-lang="lv">Privātuma politika</h1>
+  <h1 class="page-title" data-lang="ru">Политика конфиденциальности</h1>
+
+  <p class="page-meta" data-lang="lv">Spēkā no: 2026. gada 22. jūlija · Saffron Photo Studio, Ropažu iela 140, Rīga, Latvija</p>
+  <p class="page-meta" data-lang="ru">Действует с: 22 июля 2026 года · Saffron Photo Studio, Ropažu iela 140, Рига, Латвия</p>
+
+  <!-- LV CONTENT -->
+  <div data-lang="lv">
+
+    <p>Saffron Photo Studio (turpmāk — "Studija", "mēs") ciena jūsu privātumu un apņemas aizsargāt jūsu personas datus saskaņā ar Eiropas Parlamenta un Padomes Regulu (ES) 2016/679 (VDAR) un Latvijas Fizisko personu datu apstrādes likumu.</p>
+
+    <h2>1. Pārzinis</h2>
+    <p>Datu pārzinis: Saffron Photo Studio<br>
+    Adrese: Ropažu iela 140, Rīga, Latvija<br>
+    E-pasts: <a href="mailto:info@example.com">info@example.com</a><br>
+    WhatsApp / tālrunis: +371 XX XXX XXX</p>
+
+    <h2>2. Kādus datus mēs apkopojam</h2>
+    <p>Aizpildot rezervācijas formu (WhatsApp vai e-pasta veidā) vai sazinoties ar mums citādi, mēs varam apkopot šādus personas datus:</p>
+    <ul>
+      <li>Vārds un uzvārds</li>
+      <li>Tālruņa numurs</li>
+      <li>E-pasta adrese (ja norādīta)</li>
+      <li>Rezervācijas datums un izvēlētais ilgums</li>
+      <li>Brīvā lauka komentāri, ko sniedzat pats</li>
+    </ul>
+    <p>Ja izmantojat WhatsApp pogu, ziņa tiek nosūtīta tieši uz mūsu WhatsApp numuru caur WhatsApp platformu (Meta) — uz šo saziņu attiecas arī WhatsApp lietošanas noteikumi un privātuma politika.</p>
+    <p>Mēs neapkopojam sensitīvus personas datus (veselības dati, finanšu dati u.c.), kā arī neapzināti neapkopojam datus par personām, kas jaunākas par 16 gadiem.</p>
+
+    <h2>3. Apstrādes nolūki un tiesiskais pamats</h2>
+    <ul>
+      <li><strong>Rezervācijas apstrāde</strong> — lai apstrādātu jūsu studijas rezervācijas pieteikumu un ar jums sazinātos (tiesiskais pamats: līguma izpilde / pasākumi pirms līguma noslēgšanas).</li>
+      <li><strong>Klientu atbalsts</strong> — lai atbildētu uz jūsu jautājumiem un risinātu iespējamās sūdzības (tiesiskais pamats: likumīgās intereses).</li>
+      <li><strong>Juridiskie pienākumi</strong> — ja to pieprasa normatīvie akti, piemēram, grāmatvedības uzskaitei (tiesiskais pamats: juridisks pienākums).</li>
+    </ul>
+
+    <h2>4. Glabāšanas termiņš</h2>
+    <p>Jūsu personas datus glabājam ne ilgāk, nekā nepieciešams norādītajiem nolūkiem:</p>
+    <ul>
+      <li>Rezervācijas dati — 12 mēneši pēc sesijas datuma.</li>
+      <li>Sarakstes dati (e-pasts, WhatsApp) — 24 mēneši pēc pēdējā kontakta.</li>
+      <li>Grāmatvedības vajadzībām nepieciešamie dati — 5 gadi (likuma prasība).</li>
+    </ul>
+
+    <h2>5. Datu nodošana trešajām personām</h2>
+    <p>Mēs nenododam jūsu personas datus trešajām personām komerciālos nolūkos. Dati var tikt nodoti:</p>
+    <ul>
+      <li>Tehnoloģiju pakalpojumu sniedzējiem (piemēram, WhatsApp/Meta, e-pasta pakalpojumu sniedzējiem), kas darbojas kā datu apstrādātāji vai neatkarīgi pārziņi atbilstoši savai lietošanas politikai.</li>
+      <li>Valsts iestādēm, ja to pieprasa likums.</li>
+    </ul>
+
+    <h2>6. Sīkdatnes</h2>
+    <p>Šī vietne pašlaik neizmanto sīkdatnes analītikas vai mārketinga nolūkos. Ja nākotnē tiks ieviesta sīkdatņu izmantošana, mēs atjaunināsim šo politiku un lūgsim jūsu piekrišanu.</p>
+
+    <h2>7. Jūsu tiesības</h2>
+    <p>Saskaņā ar VDAR jums ir šādas tiesības:</p>
+    <ul>
+      <li><strong>Piekļuves tiesības</strong> — pieprasīt informāciju par to, kādus datus mēs apstrādājam.</li>
+      <li><strong>Labošanas tiesības</strong> — lūgt neprecīzu datu labošanu.</li>
+      <li><strong>Dzēšanas tiesības</strong> — lūgt datu dzēšanu ("tiesības tikt aizmirstam").</li>
+      <li><strong>Apstrādes ierobežošanas tiesības</strong> — noteiktos apstākļos ierobežot datu apstrādi.</li>
+      <li><strong>Iebilduma tiesības</strong> — iebilst pret apstrādi, kas balstīta uz likumīgajām interesēm.</li>
+      <li><strong>Datu pārnesamības tiesības</strong> — saņemt savus datus strukturētā formātā.</li>
+    </ul>
+    <p>Lai izmantotu šīs tiesības, sazinieties ar mums: <a href="mailto:info@example.com">info@example.com</a>.</p>
+
+    <h2>8. Sūdzības</h2>
+    <p>Ja uzskatāt, ka mēs pārkāpjam jūsu tiesības, jums ir tiesības iesniegt sūdzību Datu valsts inspekcijai (<a href="https://www.dvi.gov.lv" target="_blank">www.dvi.gov.lv</a>).</p>
+
+    <h2>9. Grozījumi</h2>
+    <p>Mēs paturam tiesības atjaunināt šo privātuma politiku. Par būtiskām izmaiņām paziņosim, publicējot atjauninātu versiju šajā lapā ar jaunu spēkā stāšanās datumu.</p>
+
+    <div class="highlight-box">
+      <strong>Jautājumi?</strong> Sazinieties ar mums pa e-pastu <a href="mailto:info@example.com">info@example.com</a> vai rakstiet WhatsApp <a href="tel:+371xxxxxxxx">+371 XX XXX XXX</a>. Mēs atbildēsim 5 darba dienu laikā.
+    </div>
+
+  </div>
+
+  <!-- RU CONTENT -->
+  <div data-lang="ru">
+
+    <p>Saffron Photo Studio (далее — «Студия», «мы») уважает вашу конфиденциальность и обязуется защищать ваши персональные данные в соответствии с Регламентом ЕС 2016/679 (GDPR) и законодательством Латвии о защите персональных данных.</p>
+
+    <h2>1. Контролёр данных</h2>
+    <p>Контролёр персональных данных: Saffron Photo Studio<br>
+    Адрес: Ropažu iela 140, Рига, Латвия<br>
+    E-mail: <a href="mailto:info@example.com">info@example.com</a><br>
+    WhatsApp / телефон: +371 XX XXX XXX</p>
+
+    <h2>2. Какие данные мы собираем</h2>
+    <p>При заполнении формы бронирования (через WhatsApp или e-mail) или при ином обращении к нам мы можем собирать следующие персональные данные:</p>
+    <ul>
+      <li>Имя и фамилия</li>
+      <li>Номер телефона</li>
+      <li>Адрес электронной почты (если указан)</li>
+      <li>Дата бронирования и выбранная продолжительность</li>
+      <li>Комментарии, которые вы вводите самостоятельно</li>
+    </ul>
+    <p>Если вы используете кнопку WhatsApp, сообщение отправляется напрямую на наш номер через платформу WhatsApp (Meta) — на эту переписку также распространяются условия использования и политика конфиденциальности WhatsApp.</p>
+    <p>Мы не собираем чувствительные персональные данные (здоровье, финансовые данные и т.п.), а также не собираем целенаправленно данные лиц младше 16 лет.</p>
+
+    <h2>3. Цели и правовые основания обработки</h2>
+    <ul>
+      <li><strong>Обработка бронирования</strong> — для обработки вашей заявки и связи с вами (правовое основание: исполнение договора / меры до заключения договора).</li>
+      <li><strong>Поддержка клиентов</strong> — для ответа на вопросы и решения возможных претензий (правовое основание: законные интересы).</li>
+      <li><strong>Юридические обязательства</strong> — если этого требует законодательство, например для бухгалтерского учёта (правовое основание: юридическая обязанность).</li>
+    </ul>
+
+    <h2>4. Сроки хранения данных</h2>
+    <p>Ваши персональные данные хранятся не дольше, чем это необходимо для указанных целей:</p>
+    <ul>
+      <li>Данные бронирований — 12 месяцев после даты сессии.</li>
+      <li>Переписка (e-mail, WhatsApp) — 24 месяца с момента последнего контакта.</li>
+      <li>Данные для бухгалтерского учёта — 5 лет (требование закона).</li>
+    </ul>
+
+    <h2>5. Передача данных третьим лицам</h2>
+    <p>Мы не передаём ваши персональные данные третьим лицам в коммерческих целях. Данные могут быть переданы:</p>
+    <ul>
+      <li>Поставщикам технологических услуг (например, WhatsApp/Meta, сервисам электронной почты), действующим в качестве обработчиков данных или независимых контролёров согласно своей политике.</li>
+      <li>Государственным органам, если этого требует закон.</li>
+    </ul>
+
+    <h2>6. Файлы cookie</h2>
+    <p>Данный сайт в настоящее время не использует файлы cookie в аналитических или маркетинговых целях. Если в будущем использование cookie будет введено, мы обновим настоящую политику и запросим ваше согласие.</p>
+
+    <h2>7. Ваши права</h2>
+    <p>В соответствии с GDPR у вас есть следующие права:</p>
+    <ul>
+      <li><strong>Право на доступ</strong> — запросить информацию о том, какие данные мы обрабатываем.</li>
+      <li><strong>Право на исправление</strong> — попросить исправить неточные данные.</li>
+      <li><strong>Право на удаление</strong> — попросить удалить данные («право быть забытым»).</li>
+      <li><strong>Право на ограничение обработки</strong> — в определённых случаях ограничить обработку данных.</li>
+      <li><strong>Право на возражение</strong> — возражать против обработки, основанной на законных интересах.</li>
+      <li><strong>Право на переносимость данных</strong> — получить свои данные в структурированном формате.</li>
+    </ul>
+    <p>Чтобы воспользоваться этими правами, свяжитесь с нами: <a href="mailto:info@example.com">info@example.com</a>.</p>
+
+    <h2>8. Жалобы</h2>
+    <p>Если вы считаете, что мы нарушаем ваши права, вы вправе подать жалобу в Инспекцию данных Латвии (<a href="https://www.dvi.gov.lv" target="_blank">www.dvi.gov.lv</a>).</p>
+
+    <h2>9. Изменения</h2>
+    <p>Мы оставляем за собой право обновлять настоящую политику конфиденциальности. О существенных изменениях мы уведомим, опубликовав обновлённую версию на этой странице с новой датой вступления в силу.</p>
+
+    <div class="highlight-box">
+      <strong>Вопросы?</strong> Свяжитесь с нами по e-mail <a href="mailto:info@example.com">info@example.com</a> или напишите в WhatsApp <a href="tel:+371xxxxxxxx">+371 XX XXX XXX</a>. Мы ответим в течение 5 рабочих дней.
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Saffron Photo Studio · Rīga</span>
+  <a href="saffron-photo-studio.html" id="footerBack">← Atpakaļ uz sākumlapu</a>
+</footer>
+
+<script>
+let lang = 'lv';
+function setLang(l) {
+  lang = l;
+  document.body.className = 'lang-' + l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase() === l));
+  document.getElementById('backLabel').textContent = l === 'lv' ? 'Atpakaļ' : 'Назад';
+  document.getElementById('kickerText').textContent = l === 'lv' ? 'Juridiskā informācija' : 'Юридическая информация';
+  document.getElementById('footerBack').textContent = l === 'lv' ? '← Atpakaļ uz sākumlapu' : '← Вернуться на главную';
+}
+</script>
+</body>
+</html>
